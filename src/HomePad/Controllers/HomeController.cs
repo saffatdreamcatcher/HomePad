@@ -1,5 +1,6 @@
 ﻿using HomePad.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace HomePad.Controllers
@@ -28,5 +29,6 @@ namespace HomePad.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
