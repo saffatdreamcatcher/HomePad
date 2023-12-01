@@ -11,8 +11,12 @@ namespace ApplicationCore.Entities
     {
         public string Name { get; set; }
 
-        public Income Income { get; set; }
-       
+        //public Income Income { get; set; }
+
+        public ICollection<Income> Incomes { get; set; }
+
+        public ICollection<Expense> Expences { get; set; }
+
 
     }
 
