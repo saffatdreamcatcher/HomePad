@@ -11,10 +11,13 @@ namespace ApplicationCore.Entities
     {
         public string Name { get; set; }
         public string Note { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime CreateDate { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime LastUpdatedDate { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime LastUpdatedBy { get; set; }
         public bool IsRemoved { get; set; }

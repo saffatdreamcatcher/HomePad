@@ -14,15 +14,19 @@ namespace ApplicationCore.Entities
         public string Title { get; set;}
         [DataType(DataType.Date)]
         public DateTime TransactionDate { get; set; }
+
         [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
         
         public string Note { get; set; }
         public byte[]? Attachment { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime CreateDate { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime LastUpdatedDate { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime LastUpdatedBy { get; set; }
         public bool IsRemoved { get; set; }

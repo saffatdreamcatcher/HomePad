@@ -1,7 +1,10 @@
-﻿using HomePad.Models;
+﻿using ApplicationCore.Entities;
+using HomePad.Models;
+using Infrastructure.Data_Access;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+
 
 namespace HomePad.Controllers
 {
@@ -16,6 +19,12 @@ namespace HomePad.Controllers
 
         public IActionResult Index()
         {
+            Repository<AccountHead>  repository = new Repository<AccountHead>();
+            AccountHead accountHead = new AccountHead();
+            //accountHead.Id = 1;
+            accountHead.Name = "Test";
+            repository.Insert(accountHead);
+            repository.Save();
             return View();
         }
 

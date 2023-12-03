@@ -11,10 +11,13 @@ namespace ApplicationCore.Entities
     {
         public int DocumentId { get; set; }
         public byte[]? Attachment { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime CreateDate { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime LastUpdatedDate { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime LastUpdatedBy { get; set; }
         public bool IsRemoved { get; set; }
