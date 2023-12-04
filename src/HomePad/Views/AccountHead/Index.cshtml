@@ -1,0 +1,26 @@
+﻿@model IEnumerable<HomePad.Models.AccountHeadVM>
+@{
+    ViewData["Index"] = "AccountHead";
+}
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+
+    @foreach (var accountHead in Model)
+    {
+        <tr>
+            <td>@accountHead.Id</td>
+            <td>@accountHead.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@accountHead.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@accountHead.Id">Delete</a>
+            </td>
+            
+        </tr>
+    }
+
+
+</table>

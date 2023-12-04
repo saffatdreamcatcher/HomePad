@@ -51,7 +51,7 @@ namespace Infrastructure.Data_Access
 
         public void Update(T obj)
         {
-            //First attach the object to the table
+            //First attach the object to the set
             set.Attach(obj);
             //Then set the state of the Entity as Modified
             _context.Entry(obj).State = EntityState.Modified;

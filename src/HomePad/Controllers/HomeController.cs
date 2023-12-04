@@ -19,12 +19,21 @@ namespace HomePad.Controllers
 
         public IActionResult Index()
         {
-            Repository<AccountHead>  repository = new Repository<AccountHead>();
-            AccountHead accountHead = new AccountHead();
-            //accountHead.Id = 1;
-            accountHead.Name = "Test";
-            repository.Insert(accountHead);
-            repository.Save();
+            //Repository<AccountHead>  repository = new Repository<AccountHead>();
+            //AccountHead accountHead = new AccountHead();
+            ////accountHead.Id = 1;
+            //accountHead.Name = "Test55";
+            ////accountHead.Name = "Test222";
+            ////accountHead.Name = "Test00";
+            ////repository.Insert(accountHead);
+            ////IEnumerable<AccountHead> aH = repository.GetAll();
+            //AccountHead head = repository.GetById(2);
+            ////repository.Delete(head.Id);
+            //head.Name = "Test50";
+
+            //repository.Update(head);
+            //repository.Save();
+
             return View();
         }
 
