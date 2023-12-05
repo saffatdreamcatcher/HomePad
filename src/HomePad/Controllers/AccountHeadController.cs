@@ -21,11 +21,37 @@ namespace HomePad.Controllers
             foreach (AccountHead accountHead in accountHeads)
             {
                 AccountHeadVM accountHeadVM = new AccountHeadVM();
-                accountHeadVM.Id = accountHead.Id;  
+                accountHeadVM.Id = accountHead.Id;
                 accountHeadVM.Name = accountHead.Name;
                 accountHeadVMs.Add(accountHeadVM);
             }
             return View(accountHeadVMs);
+        }
+
+        public IActionResult Create()
+        {
+            AccountHeadVM accountHeadVM = new AccountHeadVM();
+            return View(accountHeadVM);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Name")] AccountHeadVM accountHeadVM)
+        {
+            if (ModelState.IsValid)
+            {
+                Repository<AccountHead> repository = new Repository<AccountHead>();
+                
+                AccountHead accountHead = new AccountHead();
+                accountHead.Id = accountHeadVM.Id;
+                accountHead.Name = accountHeadVM.Name;
+
+                repository.Insert(accountHead);
+                repository.Save();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(accountHeadVM);
         }
     }
 }
