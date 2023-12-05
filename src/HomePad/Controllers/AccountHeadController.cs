@@ -53,5 +53,42 @@ namespace HomePad.Controllers
             }
             return View(accountHeadVM);
         }
+
+
+        public IActionResult Edit(int Id)
+        {
+            AccountHeadVM accountHeadVM = new AccountHeadVM();
+            Repository<AccountHead> repository = new Repository<AccountHead>();
+            AccountHead accountHead = repository.GetById(Id);
+            accountHeadVM.Id = accountHead.Id;
+            accountHeadVM.Name = accountHead.Name;
+            return View(accountHeadVM);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] AccountHeadVM accountHeadVM)
+        {
+            if (id != accountHeadVM.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+
+               Repository<AccountHead> repository = new Repository<AccountHead>();
+               AccountHead accountHead = new AccountHead();
+                accountHead.Id = accountHeadVM.Id;
+                accountHead.Name = accountHeadVM.Name;
+                repository.Update(accountHead);
+                repository.Save();
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(accountHeadVM);
+        }
+
     }
 }
