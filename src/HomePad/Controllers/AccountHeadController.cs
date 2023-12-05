@@ -78,8 +78,8 @@ namespace HomePad.Controllers
             if (ModelState.IsValid)
             {
 
-               Repository<AccountHead> repository = new Repository<AccountHead>();
-               AccountHead accountHead = new AccountHead();
+                Repository<AccountHead> repository = new Repository<AccountHead>();
+                AccountHead accountHead = new AccountHead();
                 accountHead.Id = accountHeadVM.Id;
                 accountHead.Name = accountHeadVM.Name;
                 repository.Update(accountHead);
@@ -89,6 +89,33 @@ namespace HomePad.Controllers
             }
             return View(accountHeadVM);
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            AccountHeadVM accountHeadVM = new AccountHeadVM();
+            Repository<AccountHead> repository = new Repository<AccountHead>();
+            AccountHead accountHead = new AccountHead();
+            accountHead = repository.GetById(id);
+            accountHeadVM.Id = accountHead.Id;
+            accountHeadVM.Name = accountHead.Name;
+            return View(accountHeadVM);
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+
+            Repository<AccountHead> repository = new Repository<AccountHead>();
+            AccountHead accountHead = new AccountHead();
+            accountHead = repository.GetById(id);
+            repository.Delete(accountHead.Id);
+            repository.Save();
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
     }
 }
