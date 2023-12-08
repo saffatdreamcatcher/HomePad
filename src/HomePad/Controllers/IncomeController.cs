@@ -4,6 +4,7 @@ using Infrastructure.Data_Access;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HomePad.Controllers
 {
@@ -31,16 +32,26 @@ namespace HomePad.Controllers
                 incomeVM.LastUpdatedBy = income.LastUpdatedBy;
                 incomeVM.LastUpdatedDate = income.LastUpdatedDate;
                 incomeVM.CreateDate = income.CreateDate;
+                incomeVM.Attachment = income.Attachment;
                 incomeVM.Note = income.Note;
-
+                incomeVMs.Add(incomeVM);
             }
 
             return View(incomeVMs);
         }
 
         public IActionResult Create()
+        
         {
             IncomeVM incomeVM = new IncomeVM();
+            List<AccountHeadVM> aHVM = GetAccountHeadVM();
+            ViewBag.accountHeads = aHVM;
+            return View(incomeVM); 
+
+        }
+
+        private List<AccountHeadVM> GetAccountHeadVM()
+        {
             Repository<AccountHead> repository = new Repository<AccountHead>();
             IEnumerable<AccountHead> accountHeads = repository.GetAll();
             List<AccountHeadVM> accountHeadVMs = new List<AccountHeadVM>();
@@ -51,9 +62,7 @@ namespace HomePad.Controllers
                 accountHeadVM.Name = accountHead.Name;
                 accountHeadVMs.Add(accountHeadVM);
             }
-            ViewBag.accountHeads = accountHeadVMs;
-            return View(incomeVM); 
-
+            return accountHeadVMs;
         }
 
 
@@ -63,8 +72,23 @@ namespace HomePad.Controllers
         {
             if (ModelState.IsValid)
             {
+                Repository<Income> repository = new Repository<Income>();
+                Income income = new Income();
+                income.Id = incomeVM.Id;
+                income.AccountHeadId = incomeVM.AccountHeadId;
+                income.Title = incomeVM.Title;
+                income.LastUpdatedDate = incomeVM.LastUpdatedDate;
+                income.Amount = incomeVM.Amount;
+                income.Attachment = incomeVM.Attachment;
+                income.LastUpdatedDate = incomeVM.LastUpdatedDate;
+                income.LastUpdatedBy = incomeVM.LastUpdatedBy;
+                income.Note = incomeVM.Note;
+                repository.Insert(income);
+                repository.Save();
+                return RedirectToAction(nameof(Index));
 
             }
+            ViewBag.accountHeads = GetAccountHeadVM();
             return View(incomeVM);
         }
     }

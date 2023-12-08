@@ -3,7 +3,11 @@
     ViewData["Index"] = "Income";
 }
 
-
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Income" asp-action="Index" method="get">
+</form>
 
 <table class="table">
     <tr>
@@ -11,22 +15,26 @@
         <th>AccountHeadId</th>
         <th>Title</th>
         <th>TransactionDate</th>
+        <th>LastUpdatedDate</th>
+        <th>LastUpdatedBy</th>
         <th>Amount</th>
         <th>Note</th>
         <th>Attachment</th>
     </tr>
 
 
-    @foreach (var accountHead in Model)
+    @foreach (var income in Model)
     {
         <tr>
-            <td>@accountHead.Id</td>
-            <td>@accountHead.AccountHeadId</td>
-            <td>@accountHead.Title</td>
-            <td>@accountHead.TransactionDate</td>
-            <td>@accountHead.Amount</td>
-            <td>@accountHead.Note</td>
-            <td>@accountHead.Attachment</td>
+            <td>@income.Id</td>
+            <td>@income.AccountHeadId</td>
+            <td>@income.Title</td>
+            <td>@income.TransactionDate</td>
+            <td>@income.LastUpdatedDate</td>
+            <td>@income.LastUpdatedBy</td>
+            <td>@income.Amount</td>
+            <td>@income.Note</td>
+            <td>@income.Attachment</td>
 
         </tr>
     }
