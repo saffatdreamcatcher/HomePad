@@ -36,6 +36,11 @@
             <td>@income.Note</td>
             <td>@income.Attachment</td>
 
+            <td>
+                <a asp-action="Edit" asp-route-id="@income.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@income.Id">Delete</a>
+            </td>
+
         </tr>
     }
 

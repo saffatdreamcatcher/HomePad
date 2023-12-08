@@ -91,5 +91,55 @@ namespace HomePad.Controllers
             ViewBag.accountHeads = GetAccountHeadVM();
             return View(incomeVM);
         }
+
+        public IActionResult Edit(int Id)
+        {
+            IncomeVM incomeVM = new IncomeVM();
+            Repository<Income> repository = new Repository<Income>();
+            Income income = repository.GetById(Id);
+            incomeVM.Id = income.Id;
+            incomeVM.AccountHeadId = income.AccountHeadId;
+            incomeVM.Title = income.Title;
+            incomeVM.LastUpdatedDate = income.LastUpdatedDate;
+            incomeVM.Amount = income.Amount;
+            incomeVM.Attachment = income.Attachment;
+            incomeVM.LastUpdatedDate = income.LastUpdatedDate;
+            incomeVM.LastUpdatedBy = income.LastUpdatedBy;
+            incomeVM.Note = income.Note;
+
+            return View(incomeVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, IncomeVM incomeVM)
+        {
+            if (id != incomeVM.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                Repository<Income> repository = new Repository<Income>();
+                Income income = new Income();
+                income.Id = incomeVM.Id;
+                income.AccountHeadId = incomeVM.AccountHeadId;
+                income.Title = incomeVM.Title;
+                income.LastUpdatedDate = incomeVM.LastUpdatedDate;
+                income.Amount = incomeVM.Amount;
+                income.Attachment = incomeVM.Attachment;
+                income.LastUpdatedDate = incomeVM.LastUpdatedDate;
+                income.LastUpdatedBy = incomeVM.LastUpdatedBy;
+                income.Note = incomeVM.Note;
+
+                repository.Update(income);
+                repository.Save();
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(incomeVM);
+        }
     }
 }
