@@ -141,5 +141,38 @@ namespace HomePad.Controllers
             }
             return View(incomeVM);
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            IncomeVM incomeVM = new IncomeVM();
+            Repository<Income> repository = new Repository<Income>();
+            Income income = repository.GetById(id);
+            incomeVM.Id = income.Id;
+            incomeVM.AccountHeadId = income.AccountHeadId;
+            incomeVM.Title = income.Title;
+            incomeVM.LastUpdatedDate = income.LastUpdatedDate;
+            incomeVM.Amount = income.Amount;
+            incomeVM.Attachment = income.Attachment;
+            incomeVM.LastUpdatedDate = income.LastUpdatedDate;
+            incomeVM.LastUpdatedBy = income.LastUpdatedBy;
+            incomeVM.Note = income.Note;
+            return View(incomeVM);
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+
+            Repository<Income> repository = new Repository<Income>();
+            Income income = new Income();
+            income = repository.GetById(id);
+            repository.Delete(income.Id);
+            repository.Save();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
