@@ -1,0 +1,35 @@
+﻿@model IEnumerable<HomePad.Models.IncomeVM>
+@{
+    ViewData["Index"] = "Income";
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>AccountHeadId</th>
+        <th>Title</th>
+        <th>TransactionDate</th>
+        <th>Amount</th>
+        <th>Note</th>
+        <th>Attachment</th>
+    </tr>
+
+
+    @foreach (var accountHead in Model)
+    {
+        <tr>
+            <td>@accountHead.Id</td>
+            <td>@accountHead.AccountHeadId</td>
+            <td>@accountHead.Title</td>
+            <td>@accountHead.TransactionDate</td>
+            <td>@accountHead.Amount</td>
+            <td>@accountHead.Note</td>
+            <td>@accountHead.Attachment</td>
+
+        </tr>
+    }
+
+
+</table>

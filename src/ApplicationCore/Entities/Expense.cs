@@ -23,8 +23,7 @@ namespace ApplicationCore.Entities
         [DataType(DataType.Date)] 
         public DateTime CreateDate { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime LastUpdatedDate { get; set; }
+        public string LastUpdatedDate { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime LastUpdatedBy { get; set; }

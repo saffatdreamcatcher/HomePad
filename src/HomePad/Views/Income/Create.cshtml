@@ -1,0 +1,12 @@
+﻿@model HomePad.Models.IncomeVM
+@{
+    ViewData["Index"] = "Income";
+ }
+
+@Html.DropDownListFor(inc => inc.AccountHeadId,
+                    new SelectList(ViewBag.accountHeads, "Id", "Name"),
+                    "Select AccountHead",
+                    new { @class = "form-control" })
+
+@Html.TextBoxFor(inc=> inc.TransactionDate)
+

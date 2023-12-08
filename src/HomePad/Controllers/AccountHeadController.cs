@@ -94,8 +94,7 @@ namespace HomePad.Controllers
         {
             AccountHeadVM accountHeadVM = new AccountHeadVM();
             Repository<AccountHead> repository = new Repository<AccountHead>();
-            AccountHead accountHead = new AccountHead();
-            accountHead = repository.GetById(id);
+            AccountHead  accountHead = repository.GetById(id);
             accountHeadVM.Id = accountHead.Id;
             accountHeadVM.Name = accountHead.Name;
             return View(accountHeadVM);

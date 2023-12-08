@@ -21,8 +21,7 @@ namespace ApplicationCore.Entities
         [DataType(DataType.Date)]
         public DateTime LastUpdatedDate { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime LastUpdatedBy { get; set; }
+        public string LastUpdatedBy { get; set; }
         public bool IsRemoved { get; set; }
         public ICollection<PasswordVaultDetail> PasswordVaultDetails { get; set; }
 

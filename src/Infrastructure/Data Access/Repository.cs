@@ -18,6 +18,7 @@ namespace Infrastructure.Data_Access
         private DbSet<T> set = null;
         //Using the Parameterless Constructor, 
         //we are initializing the context object and table variable
+
         public Repository()
         {
             this._context = new HomePadContext();
@@ -25,11 +26,12 @@ namespace Infrastructure.Data_Access
             //That class name will be stored in the set variable
             set = _context.Set<T>();
         }
+
         //Using the Parameterized Constructor, 
         //we are initializing the context object and set variable
-        public Repository(HomePadContext _context)
+        public Repository(HomePadContext context)
         {
-            this._context = _context;
+            this._context = context;
             set = _context.Set<T>();
         }
 
