@@ -11,12 +11,12 @@
 
 <table class="table">
     <tr>
-        <th>Id</th>
-        <th>AccountHeadId</th>
+        <th style="visibility:hidden">Id</th>
+        <th>Account Head</th>
         <th>Title</th>
-        <th>TransactionDate</th>
-        <th>LastUpdatedDate</th>
-        <th>LastUpdatedBy</th>
+        <th>Transaction Date</th>
+        <th>Last Updated Date</th>
+        @* <th>Last Updated By</th> *@
         <th>Amount</th>
         <th>Note</th>
         <th>Attachment</th>
@@ -26,12 +26,12 @@
     @foreach (var income in Model)
     {
         <tr>
-            <td>@income.Id</td>
-            <td>@income.AccountHeadId</td>
+            <td style="visibility:hidden">@income.Id</td>
+            <td>@income.AccountHeadName</td>
             <td>@income.Title</td>
             <td>@income.TransactionDate</td>
             <td>@income.LastUpdatedDate</td>
-            <td>@income.LastUpdatedBy</td>
+            @* <td>@income.LastUpdatedBy</td> *@
             <td>@income.Amount</td>
             <td>@income.Note</td>
             <td>@income.Attachment</td>

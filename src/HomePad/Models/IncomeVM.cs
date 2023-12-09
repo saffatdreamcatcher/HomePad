@@ -18,6 +18,7 @@ namespace HomePad.Models
 
         public int Id { get; set; }
         public int AccountHeadId { get; set; }
+
         public string Title { get; set; }
 
         [DataType(DataType.Date)]
@@ -34,6 +35,8 @@ namespace HomePad.Models
 
         public string LastUpdatedBy { get; set; }
 
-        
+        public string AccountHeadName { get; set; }
+
+
     }
 }

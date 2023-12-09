@@ -21,12 +21,20 @@ namespace HomePad.Controllers
             Repository<Income> repository = new Repository<Income>();
             IEnumerable<Income> incomes = repository.GetAll();
             List<IncomeVM> incomeVMs = new List<IncomeVM>();
-        
+            Repository<AccountHead> repo = new Repository<AccountHead>();
+           
+
             foreach (Income income in incomes)
             {
+                
                 IncomeVM incomeVM = new IncomeVM();
                 incomeVM.Id = income.Id;
                 incomeVM.AccountHeadId = income.AccountHeadId;
+
+                AccountHead accHead = repo.GetById(incomeVM.AccountHeadId);
+
+                incomeVM.AccountHeadName = accHead.Name;
+                
                 incomeVM.Title = income.Title;
                 incomeVM.TransactionDate = income.TransactionDate;
                 incomeVM.LastUpdatedBy = income.LastUpdatedBy;
@@ -168,7 +176,7 @@ namespace HomePad.Controllers
             Repository<Income> repository = new Repository<Income>();
             Income income = new Income();
             income = repository.GetById(id);
-            repository.Delete(income.Id);
+            repository.Delete(income.Id);  
             repository.Save();
 
             return RedirectToAction(nameof(Index));
