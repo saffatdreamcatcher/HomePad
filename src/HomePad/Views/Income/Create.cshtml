@@ -12,9 +12,10 @@
     });
 </script> *@
 
-<form asp-action="Create">
+<form class="row g-3" asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="col-md-2">
+    <div class="col-md-6">
+        <label asp-for="AccountHeadName" class="control-label"></label>
         @Html.DropDownListFor(inc => inc.AccountHeadId,
         new SelectList(ViewBag.accountHeads, "Id", "Name"),
         "Select AccountHead",
@@ -22,39 +23,45 @@
 
     </div>
 
-    <div class="form-group">
-        @Html.TextBoxFor(inc=> inc.TransactionDate)
+    <div class="col-md-6">
+        @* @Html.TextBoxFor(inc=> inc.TransactionDate) *@
+        <label asp-for="TransactionDate" class="control-label"></label>
+        <input asp-for="TransactionDate" class="form-control" />
+        <span asp-validation-for="TransactionDate" class="text-danger"></span>
     </div>
 
-    <div class="col-md-2">
+   
+    <div class="col-md-6">
         <label asp-for="Title" class="control-label"></label>
         <input asp-for="Title" class="form-control" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-6">
         <label asp-for="Amount" class="control-label"></label>
         <input asp-for="Amount" class="form-control" />
         <span asp-validation-for="Amount" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        @Html.TextBoxFor(inc=> inc.TransactionDate)
+    <div class="col-md-6">
+        <label asp-for="LastUpdatedDate" class="control-label"></label>
+        <input asp-for="LastUpdatedDate" class="form-control" />
+        <span asp-validation-for="LastUpdatedDate" class="text-danger"></span>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-6">
         <label asp-for="LastUpdatedBy" class="control-label"></label>
         <input asp-for="LastUpdatedBy" class="form-control" />
         <span asp-validation-for="LastUpdatedBy" class="text-danger"></span>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-6">
         <label asp-for="Attachment" class="control-label"></label>
         <input asp-for="Attachment" class="form-control" />
         <span asp-validation-for="Attachment" class="text-danger"></span>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-6">
         <label asp-for="Note" class="control-label"></label>
         <input asp-for="Note" class="form-control" />
         <span asp-validation-for="Note" class="text-danger"></span>
