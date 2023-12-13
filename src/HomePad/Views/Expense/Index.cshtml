@@ -1,0 +1,50 @@
+﻿@model IEnumerable<HomePad.Models.ExpenseVM>
+@{
+    ViewData["Index"] = "Expense";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Expense" asp-action="Index" method="get">
+</form>
+
+<table class="table">
+    <tr>
+        <th style="visibility:hidden">Id</th>
+        <th>Account Head</th>
+        <th>AccountHeadName</th>
+        <th>Title</th>
+        <th>Transaction Date</th>
+        <th>Last Updated Date</th>
+        @* <th>Last Updated By</th> *@
+        <th>Amount</th>
+        <th>Note</th>
+        <th>Attachment</th>
+    </tr>
+
+
+    @foreach (var expense in Model)
+    {
+        <tr>
+            <td style="visibility:hidden">@expense.Id</td>
+            <td>@expense.AccountHeadName</td>
+            <td>@expense.Title</td>
+            <td>@expense.TransactionDate</td>
+            <td>@expense.LastUpdatedDate</td>
+            @* <td>@expense.LastUpdatedBy</td> *@
+            <td>@expense.Amount</td>
+            <td>@expense.Note</td>
+            <td>@expense.Attachment</td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@expense.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@expense.Id">Delete</a>
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+

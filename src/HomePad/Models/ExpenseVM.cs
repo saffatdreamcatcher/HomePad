@@ -1,17 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using ApplicationCore.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using ApplicationCore;
 
-namespace ApplicationCore.Entities
+namespace HomePad.Models
 {
-    public class Expense : BaseEntity
+    public class ExpenseVM : BaseEntity
     {
+        public ExpenseVM()
+        { 
+
+        }
+        public ExpenseVM(int id)
+        {
+            Id = id;
+        }
+        public int Id { get; set; } 
         public int AccountHeadId { get; set; }
         public string Title { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime TransactionDate { get; set; }
 
@@ -20,14 +27,14 @@ namespace ApplicationCore.Entities
         public string? Note { get; set; }
         public byte[]? Attachment { get; set; }
 
-        [DataType(DataType.Date)] 
+        [DataType(DataType.Date)]
         public DateTime CreateDate { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime LastUpdatedDate { get; set; }
 
+        public DateTime LastUpdatedDate { get; set; }
         public string LastUpdatedBy { get; set; }
-        public bool IsRemoved { get; set; }
-        public AccountHead AccountHead { get; set; }
+       
+        public string AccountHeadName { get; set; }
     }
 }

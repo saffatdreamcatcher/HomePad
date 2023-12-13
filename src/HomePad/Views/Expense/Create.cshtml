@@ -1,16 +1,9 @@
-﻿@model HomePad.Models.IncomeVM
+﻿@model HomePad.Models.ExpenseVM
 @{
-    ViewData["Index"] = "Income";
- }
+    ViewData["Index"] = "Expense";
+}
 
 
-
-
-@* <script type="text/javascript">
-    $(document).ready(function() {
-        alert("document loaded");
-    });
-</script> *@
 
 <form class="row g-3" asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -30,7 +23,7 @@
         <span asp-validation-for="TransactionDate" class="text-danger"></span>
     </div>
 
-   
+
     <div class="col-md-6">
         <label asp-for="Title" class="control-label"></label>
         <input asp-for="Title" class="form-control" />
@@ -49,6 +42,11 @@
         <span asp-validation-for="LastUpdatedDate" class="text-danger"></span>
     </div>
 
+    <div class="col-md-6">
+        <label asp-for="LastUpdatedBy" class="control-label"></label>
+        <input asp-for="LastUpdatedBy" class="form-control" />
+        <span asp-validation-for="LastUpdatedBy" class="text-danger"></span>
+    </div>
 
     <div class="col-md-6">
         <label asp-for="Attachment" class="control-label"></label>
@@ -61,9 +59,6 @@
         <input asp-for="Note" class="form-control" />
         <span asp-validation-for="Note" class="text-danger"></span>
     </div>
-    <input type="hidden" asp-for="AccountHeadName" />
-    <input type="hidden" asp-for="LastUpdatedBy" />
-
 
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />
@@ -71,7 +66,7 @@
 
     @section Scripts{
         <script>
-            function displayAlert(){
+            function displayAlert() {
                 alert("Sucess!");
 
             }
@@ -80,4 +75,5 @@
     }
 
 </form>
+
 

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Diagnostics.CodeAnalysis;
 
 namespace HomePad.Models
 {
@@ -33,9 +34,11 @@ namespace HomePad.Models
         [DataType(DataType.Date)]
         public DateTime LastUpdatedDate { get; set; }
 
-        public string LastUpdatedBy { get; set; }
+        [AllowNull]
+        public string? LastUpdatedBy { get; set; }
 
-        public string AccountHeadName { get; set; }
+        [AllowNull]
+        public string? AccountHeadName { get; set; }
 
 
     }

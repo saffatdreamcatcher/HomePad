@@ -88,8 +88,8 @@ namespace HomePad.Controllers
                 income.LastUpdatedDate = incomeVM.LastUpdatedDate;
                 income.Amount = incomeVM.Amount;
                 income.Attachment = incomeVM.Attachment;
-                income.LastUpdatedDate = incomeVM.LastUpdatedDate;
-                income.LastUpdatedBy = incomeVM.LastUpdatedBy;
+                income.LastUpdatedDate = DateTime.Now;
+                income.LastUpdatedBy = string.Empty;
                 income.Note = incomeVM.Note;
                 repository.Insert(income);
                 repository.Save();
@@ -111,7 +111,7 @@ namespace HomePad.Controllers
             incomeVM.LastUpdatedDate = income.LastUpdatedDate;
             incomeVM.Amount = income.Amount;
             incomeVM.Attachment = income.Attachment;
-            incomeVM.LastUpdatedDate = income.LastUpdatedDate;
+            incomeVM.LastUpdatedDate = DateTime.Now;
             incomeVM.LastUpdatedBy = income.LastUpdatedBy;
             incomeVM.Note = income.Note;
 
@@ -138,7 +138,7 @@ namespace HomePad.Controllers
                 income.LastUpdatedDate = incomeVM.LastUpdatedDate;
                 income.Amount = incomeVM.Amount;
                 income.Attachment = incomeVM.Attachment;
-                income.LastUpdatedDate = incomeVM.LastUpdatedDate;
+                income.LastUpdatedDate = DateTime.Now;
                 income.LastUpdatedBy = incomeVM.LastUpdatedBy;
                 income.Note = incomeVM.Note;
 
@@ -161,7 +161,7 @@ namespace HomePad.Controllers
             incomeVM.LastUpdatedDate = income.LastUpdatedDate;
             incomeVM.Amount = income.Amount;
             incomeVM.Attachment = income.Attachment;
-            incomeVM.LastUpdatedDate = income.LastUpdatedDate;
+            incomeVM.LastUpdatedDate = DateTime.Now;
             incomeVM.LastUpdatedBy = income.LastUpdatedBy;
             incomeVM.Note = income.Note;
             return View(incomeVM);
